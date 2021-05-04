@@ -1,0 +1,7 @@
+<%= simple_form_for @post do |f| %>
+    <%= f.input :user_id, collection: [[current_user.email,current_user.id]]%>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.file_field :cover %><br><br>
+    <%= f.button :submit ,class:"btn btn-success"%>
+  <% end %>

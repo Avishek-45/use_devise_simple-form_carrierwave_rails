@@ -1,0 +1,21 @@
+<% name = current_user.present? ? current_user.email : 'Stranger' %>
+<H3> Welcome, <b><%= name %> </b></H3>
+<div class="text-center">
+<span><%= link_to 'Add new post', new_post_path %></span><br/><br/>
+</div>
+<div class="d-flex justify-content-around">
+    <% @posts.each do |post| %>
+        <div class="card" style="width: 18rem; ">
+            <div class="card-body">
+            <%= image_tag(post.cover_url,:class=>"h-75 w-100" ) if post.cover?%>
+            <h5 class="card-title mb-5"><%= post.title %></</h5>
+                <p class="card-text"><%= post.description%></p>
+
+                    <span><%= link_to 'Show', post_path(post) %></span>
+                    <% if current_user.present? && current_user.id == post.user.id%>
+                    <span><%= link_to 'Delete', post_path(post), method: :delete %></span>
+                    <% end %>
+            </div>
+        </div>
+    <% end%>
+</div>

@@ -1,0 +1,20 @@
+<% if current_user.present? && current_user.id == @post.user.id %>
+<%= link_to 'Edit post',  edit_post_path(@post)%>
+<% end %><br>
+
+<div>
+    <p>Author: <b><%= @post.user.email %></b><br></p>
+    <p>Title: <b><%= @post.title%></b><br></p>
+    <div class="">
+        <div>
+        <%= image_tag(@post.cover_url,:class=>"h-50 w-50" ) if @post.cover?%>
+        </div>
+    </div><br>
+    <div >
+    Description:<br>
+    <%= @post.description %>
+    </div>
+    
+
+   
+</div>
